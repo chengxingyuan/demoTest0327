@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cxy.mapper.CarMapper">
+
+    <update id="updateCar">
+        update t_car set carName = #{carName},carPrice = #{carPrice} where id = #{id}
+    </update>
+
+    <delete id="deleteCar">
+        DELETE  FROM  t_car WHERE id = #{id}
+    </delete>
+
+    <!--删除重复金额的数据-->
+    <delete id="deleteDirtyData">
+        DELETE FROM t_car  WHERE carPrice in
+        (SELECT b.carPrice FROM ((select carPrice from t_car  GROUP BY carPrice HAVING count(carPrice)> 1 ))b)
+        AND id not in (SELECT c.id FROM
+        ((select id from t_car  GROUP BY carPrice HAVING count(carPrice)> 1 ) )c)
+    </delete>
+
+</mapper>

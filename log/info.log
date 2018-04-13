@@ -1,0 +1,66 @@
+14:41:38.600 logback [main] INFO  com.cxy.DemoTest0327Application:48 - Starting DemoTest0327Application on DESKTOP-4QI3E1J with PID 9760 (F:\CZYcode\demoTest0327\target\classes started by asus in F:\CZYcode\demoTest0327)
+14:41:38.604 logback [main] INFO  com.cxy.DemoTest0327Application:593 - No active profile set, falling back to default profiles: default
+14:41:38.906 logback [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext:583 - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1c56eb9: startup date [Wed Mar 28 14:41:38 CST 2018]; root of context hierarchy
+14:41:38.947 logback [background-preinit] INFO  o.h.validator.internal.util.Version:30 - HV000001: Hibernate Validator 5.3.6.Final
+14:41:40.742 logback [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer:89 - Tomcat initialized with port(s): 8084 (http)
+14:41:40.754 logback [main] INFO  o.a.catalina.core.StandardService:179 - Starting service [Tomcat]
+14:41:40.755 logback [main] INFO  o.a.catalina.core.StandardEngine:179 - Starting Servlet Engine: Apache Tomcat/8.5.23
+14:41:40.882 logback [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:179 - Initializing Spring embedded WebApplicationContext
+14:41:40.883 logback [localhost-startStop-1] INFO  o.s.web.context.ContextLoader:276 - Root WebApplicationContext: initialization completed in 1977 ms
+14:41:41.092 logback [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean:190 - Mapping servlet: 'dispatcherServlet' to [/]
+14:41:41.100 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'characterEncodingFilter' to: [/*]
+14:41:41.101 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+14:41:41.101 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+14:41:41.101 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'requestContextFilter' to: [/*]
+14:41:41.971 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter:534 - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1c56eb9: startup date [Wed Mar 28 14:41:38 CST 2018]; root of context hierarchy
+14:41:42.060 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/insertCar]}" onto public void com.cxy.controller.CarController.insertCar(java.lang.String,java.math.BigDecimal)
+14:41:42.061 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/selectCar],methods=[POST]}" onto public java.lang.String com.cxy.controller.CarController.selectCar(java.lang.String)
+14:41:42.061 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/updateCar]}" onto public void com.cxy.controller.CarController.updateCar(java.lang.String)
+14:41:42.062 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/deleteCar]}" onto public int com.cxy.controller.CarController.deleteCar(java.lang.String)
+14:41:42.064 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+14:41:42.064 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+14:41:42.103 logback [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping:362 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+14:41:42.104 logback [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping:362 - Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+14:41:42.161 logback [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping:362 - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+14:41:42.198 logback [main] WARN  o.s.b.a.t.AbstractTemplateResolverConfiguration:60 - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+14:41:42.854 logback [main] INFO  o.s.j.e.a.AnnotationMBeanExporter:431 - Registering beans for JMX exposure on startup
+14:41:42.886 logback [main] INFO  o.a.coyote.http11.Http11NioProtocol:179 - Initializing ProtocolHandler ["http-nio-8084"]
+14:41:42.898 logback [main] INFO  o.a.coyote.http11.Http11NioProtocol:179 - Starting ProtocolHandler ["http-nio-8084"]
+14:41:42.913 logback [main] INFO  o.a.tomcat.util.net.NioSelectorPool:179 - Using a shared selector for servlet write/read
+14:41:42.934 logback [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer:201 - Tomcat started on port(s): 8084 (http)
+14:41:42.938 logback [main] INFO  com.cxy.DemoTest0327Application:57 - Started DemoTest0327Application in 5.07 seconds (JVM running for 5.659)
+14:41:45.000 logback [pool-2-thread-1] INFO  com.cxy.job.AutoDeleteDirtyDataJob:23 - 20开始删除脏数据、、、、、、11--
+14:42:00.002 logback [pool-2-thread-3] INFO  com.cxy.job.AutoDeleteDirtyDataJob:23 - 41开始删除脏数据、、、、、、11--
+14:42:15.001 logback [pool-2-thread-6] INFO  com.cxy.job.AutoDeleteDirtyDataJob:23 - 44开始删除脏数据、、、、、、11--
+14:42:24.652 logback [main] INFO  com.cxy.DemoTest0327Application:48 - Starting DemoTest0327Application on DESKTOP-4QI3E1J with PID 620 (F:\CZYcode\demoTest0327\target\classes started by asus in F:\CZYcode\demoTest0327)
+14:42:24.656 logback [main] INFO  com.cxy.DemoTest0327Application:593 - No active profile set, falling back to default profiles: default
+14:42:24.968 logback [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext:583 - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1c9876b: startup date [Wed Mar 28 14:42:24 CST 2018]; root of context hierarchy
+14:42:24.994 logback [background-preinit] INFO  o.h.validator.internal.util.Version:30 - HV000001: Hibernate Validator 5.3.6.Final
+14:42:26.897 logback [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer:89 - Tomcat initialized with port(s): 8084 (http)
+14:42:26.907 logback [main] INFO  o.a.catalina.core.StandardService:179 - Starting service [Tomcat]
+14:42:26.908 logback [main] INFO  o.a.catalina.core.StandardEngine:179 - Starting Servlet Engine: Apache Tomcat/8.5.23
+14:42:27.038 logback [localhost-startStop-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/]:179 - Initializing Spring embedded WebApplicationContext
+14:42:27.039 logback [localhost-startStop-1] INFO  o.s.web.context.ContextLoader:276 - Root WebApplicationContext: initialization completed in 2071 ms
+14:42:27.206 logback [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean:190 - Mapping servlet: 'dispatcherServlet' to [/]
+14:42:27.211 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'characterEncodingFilter' to: [/*]
+14:42:27.212 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+14:42:27.212 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+14:42:27.212 logback [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean:258 - Mapping filter: 'requestContextFilter' to: [/*]
+14:42:28.110 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter:534 - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1c9876b: startup date [Wed Mar 28 14:42:24 CST 2018]; root of context hierarchy
+14:42:28.201 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/insertCar]}" onto public void com.cxy.controller.CarController.insertCar(java.lang.String,java.math.BigDecimal)
+14:42:28.202 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/selectCar],methods=[POST]}" onto public java.lang.String com.cxy.controller.CarController.selectCar(java.lang.String)
+14:42:28.203 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/updateCar]}" onto public void com.cxy.controller.CarController.updateCar(java.lang.String)
+14:42:28.203 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/car/deleteCar]}" onto public int com.cxy.controller.CarController.deleteCar(java.lang.String)
+14:42:28.206 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+14:42:28.207 logback [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping:543 - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+14:42:28.246 logback [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping:362 - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+14:42:28.246 logback [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping:362 - Mapped URL path [/static/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+14:42:28.303 logback [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping:362 - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+14:42:28.342 logback [main] WARN  o.s.b.a.t.AbstractTemplateResolverConfiguration:60 - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+14:42:28.999 logback [main] INFO  o.s.j.e.a.AnnotationMBeanExporter:431 - Registering beans for JMX exposure on startup
+14:42:29.031 logback [main] INFO  o.a.coyote.http11.Http11NioProtocol:179 - Initializing ProtocolHandler ["http-nio-8084"]
+14:42:29.042 logback [main] INFO  o.a.coyote.http11.Http11NioProtocol:179 - Starting ProtocolHandler ["http-nio-8084"]
+14:42:29.055 logback [main] INFO  o.a.tomcat.util.net.NioSelectorPool:179 - Using a shared selector for servlet write/read
+14:42:29.081 logback [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer:201 - Tomcat started on port(s): 8084 (http)
+14:42:29.091 logback [main] INFO  com.cxy.DemoTest0327Application:57 - Started DemoTest0327Application in 4.892 seconds (JVM running for 5.459)
+14:42:30.002 logback [pool-2-thread-1] INFO  com.cxy.job.AutoDeleteDirtyDataJob:23 - 20开始删除脏数据、、、、、、11--
