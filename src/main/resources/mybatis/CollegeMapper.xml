@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cxy.mapper.CollegeMapper">
+    <resultMap id="BaseResultMap" type="com.cxy.model.College">
+        <result column="college" property="college"/>
+        <result column="initial" property="initial"/>
+        <result column="famous_person" property="famousPerson"/>
+        <result column="description" property="description"/>
+        <result column="english_name" property="englishName"/>
+    </resultMap>
+
+    <select id="queryCollegeByInitial" resultType="String" parameterType="String">
+     SELECT college FROM t_college WHERE initial = #{initial}
+    </select>
+
+    <select id="queryCollegeDetailByName" resultMap="BaseResultMap" parameterType="String">
+        SELECT * FROM t_college WHERE college = #{collegeName}
+    </select>
+
+</mapper>

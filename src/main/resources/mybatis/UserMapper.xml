@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cxy.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.cxy.model.User">
+        <result column="nick_name" property="nickName"/>
+        <result column="real_name" property="realName"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="support" property="support"/>
+        <result column="university" property="university"/>
+        <result column="attention" property="attention"/>
+        <result column="live_city" property="liveCity"/>
+        <result column="phone_num" property="phoneNum"/>
+        <result column="fans" property="fans"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <insert id="saveUser" parameterType="com.cxy.model.User" useGeneratedKeys="true" keyProperty="id">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="support != null">
+                support,
+            </if>
+            <if test="university != null">
+                university,
+            </if>
+            <if test="attention != null">
+                attention,
+            </if>
+            <if test="liveCity != null">
+                live_city,
+            </if>
+            <if test="fans != null">
+                fans,
+            </if>
+            <if test="phoneNum != null">
+                phone_num,
+            </if>
+            <if test="registerIp != null">
+                register_ip,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="realName != null">
+                #{realName},
+            </if>
+            <if test="nickName != null">
+                #{nickName},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="age != null">
+                #{age},
+            </if>
+            <if test="support != null">
+                #{support},
+            </if>
+            <if test="university != null">
+                #{university},
+            </if>
+            <if test="attention != null">
+                #{attention},
+            </if>
+            <if test="liveCity != null">
+                #{liveCity},
+            </if>
+            <if test="fans != null">
+                #{fans},
+            </if>
+            <if test="phoneNum != null">
+                #{phoneNum},
+            </if>
+            <if test="registerIp != null">
+                #{registerIp},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="userId != null">
+                #{userId},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="queryUserByUserId" resultMap="BaseResultMap" parameterType="Long">
+        SELECT * FROM user WHERE user_id = #{userId}
+    </select>
+
+    <select id="queryLastUserId" resultType="Long" >
+        SELECT user_id FROM user ORDER BY id DESC limit 1
+    </select>
+
+
+
+</mapper>

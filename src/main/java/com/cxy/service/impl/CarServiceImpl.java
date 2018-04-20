@@ -6,6 +6,7 @@ import com.cxy.service.ICarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.math.BigDecimal;
 public class CarServiceImpl implements ICarService{
 
     @Autowired
-    CarMapper carMapper;
+     private CarMapper carMapper;
 
     @Override
     public Car selectCar(int id) {
@@ -27,10 +28,11 @@ public class CarServiceImpl implements ICarService{
 
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
-    public void insertCar(String carName,BigDecimal carPrice){
+    public void insertCar(String carName, BigDecimal carPrice){
+
         carMapper.insertCar(carName,carPrice);
         Car car = carMapper.selectCar(105);
-        System.out.println(car.getCarName());
+        //System.out.println(car.getCarName());
 
 
 

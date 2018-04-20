@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 
 
 @Configuration
-//所有的定时任务都放在一个线程池中，定时任务启动时使用不同都线程。
+//所有的定时任务都放在一个线程池中，定时任务启动时使用不同的线程。
 public class ScheduleConfig implements SchedulingConfigurer {
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
