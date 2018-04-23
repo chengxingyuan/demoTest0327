@@ -32,6 +32,6 @@ public class PayController {
     @RequestMapping("/weixinPay")
     public void weixinPay(HttpServletRequest request) throws AlipayApiException {
         String requestRealIp = RequestRealIp.getRequestRealIp(request);
-        weixinPay.useWeixinPay("cxy123",new BigDecimal("20.10"),"maimai",requestRealIp);
+        weixinPay.useWeixinPay("cxy123",new BigDecimal("20.11"),"maimai",requestRealIp);
     }
 }
