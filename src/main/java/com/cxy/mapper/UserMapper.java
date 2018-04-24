@@ -27,4 +27,6 @@ public interface UserMapper {
      * @return 上一个注册人的userId
      * */
     Long queryLastUserId();
+
+    User queryUser(User user);
 }

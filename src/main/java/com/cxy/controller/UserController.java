@@ -1,7 +1,9 @@
 package com.cxy.controller;
 
+import com.cxy.exception.SystemException;
 import com.cxy.model.User;
 import com.cxy.service.IUserService;
+import com.cxy.utils.MD5Utils;
 import com.cxy.utils.RequestRealIp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,9 @@ public class UserController {
     public void userRegister(@RequestBody User user, HttpServletRequest request) {
 
         String requestRealIp = RequestRealIp.getRequestRealIp(request);
+        String passWord = user.getPassWord();
+        passWord = MD5Utils.MD5(passWord);
+        user.setPassWord(passWord);
         user.setRegisterIp(requestRealIp);
         user.setCreateTime(new Date());
         synchronized (this) {
@@ -41,6 +46,25 @@ public class UserController {
             userService.saveUser(user);
         }
 
+    }
+
+    /**
+     * 验证登录，登录名可以是userId,phoneNum
+     * */
+    @PostMapping("/loginAccount")
+    public String loginAccount(@RequestBody User user){
+        logger.info(user.getUserId()+"======================" + user.getPassWord());
+
+        User userInfo = userService.queryUser(user);
+        logger.info(user.toString() + "------------------------------------");
+        if (userInfo == null){
+            throw new SystemException("用户不存在");
+        }
+        String passWord = MD5Utils.MD5(user.getPassWord());
+        if (!passWord.equals(userInfo.getPassWord())){
+            throw new SystemException("密码错误");
+        }
+       return "登录成功";
     }
 
     /**

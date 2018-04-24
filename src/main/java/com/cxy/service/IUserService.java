@@ -13,4 +13,6 @@ public interface IUserService {
     User queryUserByUserId(Long userId);
 
     Long queryLastUserId();
+
+    User queryUser(User user);
 }

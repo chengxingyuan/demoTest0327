@@ -13,6 +13,7 @@
         <result column="phone_num" property="phoneNum"/>
         <result column="fans" property="fans"/>
         <result column="user_id" property="userId"/>
+        <result column="pass_word" property="passWord"/>
     </resultMap>
 
     <insert id="saveUser" parameterType="com.cxy.model.User" useGeneratedKeys="true" keyProperty="id">
@@ -20,6 +21,9 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="realName != null">
                 real_name,
+            </if>
+            <if test="passWord != null">
+                pass_word,
             </if>
             <if test="nickName != null">
                 nick_name,
@@ -63,6 +67,9 @@
             <if test="realName != null">
                 #{realName},
             </if>
+            <if test="passWord != null">
+                #{passWord},
+            </if>
             <if test="nickName != null">
                 #{nickName},
             </if>
@@ -102,11 +109,78 @@
         </trim>
     </insert>
 
+    <update id="updateUserInfo" parameterType="com.cxy.model.User">
+
+        <foreach collection="list" item="item" index="index"
+                 separator=";">
+            UPDATE USER <set>
+            <if test="item.realName != null and item.realName != ''">
+                "real_name" = #{item.realName},
+            </if>
+            <if test="item.passWord != null and item.passWord != ''">
+                "pass_word" = #{item.passWord},
+            </if>
+            <if test="item.nickName != null and item.nickName != ''">
+                "nick_name" = #{item.nickName},
+            </if>
+            <if test="item.sex != null and item.sex != ''">
+                "sex" = #{item.sex},
+            </if>
+            <if test="item.support != null and item.support != ''">
+                "support" = #{item.support},
+            </if>
+            <if test="item.university != null and item.university != ''">
+                "university" = #{item.university},
+            </if>
+            <if test="item.attention != null and item.attention != ''">
+                "attention" = #{item.attention},
+            </if>
+            <if test="item.liveCity != null and item.liveCity != ''">
+                "liveCity" = #{item.liveCity},
+            </if>
+            <if test="item.fans != null and item.fans != ''">
+                "fans" = #{item.fans},
+            </if>
+            <if test="item.phoneNum != null and item.phoneNum != ''">
+                "phoneNum" = #{item.phoneNum}
+            </if>
+        </set>
+            <where>
+                <if test="item.id != null and item.id != ''">
+                    "id" = #{item.id}
+                </if>
+                <if test="item.userId != null and item.userId != ''">
+                    "user_id" = #{item.userId}
+                </if>
+            </where>
+
+        </foreach>
+    </update>
+
+
+
+    <select id="queryUser" resultMap="BaseResultMap" resultType="com.cxy.model.User" parameterType="map">
+        SELECT * FROM user
+        <include refid="selectSql" />
+    </select>
+
+    <sql id="selectSql">
+        <where>
+            <if test="userId !=null and userId != ''" >
+                user_id = #{userId}
+            </if>
+            <if test="phoneNum !=null and phoneNum != ''" >
+                phone_num = #{phoneNum}
+            </if>
+        </where>
+
+    </sql>
+
     <select id="queryUserByUserId" resultMap="BaseResultMap" parameterType="Long">
         SELECT * FROM user WHERE user_id = #{userId}
     </select>
 
-    <select id="queryLastUserId" resultType="Long" >
+    <select id="queryLastUserId" resultType="Long">
         SELECT user_id FROM user ORDER BY id DESC limit 1
     </select>
 

@@ -32,5 +32,10 @@ public class UserServiceImpl implements IUserService {
         return userMapper.queryLastUserId();
     }
 
+    @Override
+    public User queryUser(User user) {
+        return userMapper.queryUser(user);
+    }
+
 
 }

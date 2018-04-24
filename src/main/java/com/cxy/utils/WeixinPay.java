@@ -111,7 +111,7 @@ public class WeixinPay {
 //                throw new CodeAttribute.RuntimeCopyException("HTTP请求出错！！！");
 //            }
 //
-//        } catch (Exception e) {
+//        } catch (exception e) {
 //            e.printStackTrace();
 //        } finally {
 //            try {

@@ -21,6 +21,11 @@ public class User {
     private String realName;
 
     /**
+     * 密码
+     * */
+    private String passWord;
+
+    /**
      * 年龄
      * */
     private int age;
@@ -74,6 +79,14 @@ public class User {
      * 用户id
      * */
     private Long userId;
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
 
     public Long getUserId() {
         return userId;
@@ -185,5 +198,26 @@ public class User {
 
     public void setLiveCity(String liveCity) {
         this.liveCity = liveCity;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nickName='" + nickName + '\'' +
+                ", realName='" + realName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", university='" + university + '\'' +
+                ", attention='" + attention + '\'' +
+                ", fans='" + fans + '\'' +
+                ", support=" + support +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", liveCity='" + liveCity + '\'' +
+                ", createTime=" + createTime +
+                ", registerIp='" + registerIp + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }
