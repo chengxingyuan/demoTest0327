@@ -3,6 +3,7 @@ package com.cxy.utils;
 /**
  * @author chengxy
  * @date 2018/4/19 14:01
+ * 验证码生成
  */
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,10 +15,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Random;
-/**
- * <p><b>VerifyCodeUtils Description:</b> (验证码生成)</p>
- * <b>DATE:</b> 2016年6月2日 下午3:53:34
- */
 public class VerifyCodeUtils{
 
     //使用到Algerian字体，系统里没有的话需要安装字体，字体只显示大写，去掉了1,0,i,o几个容易混淆的字符

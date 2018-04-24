@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
@@ -52,7 +53,7 @@ public class UserController {
      * 验证登录，登录名可以是userId,phoneNum
      * */
     @PostMapping("/loginAccount")
-    public String loginAccount(@RequestBody User user){
+    public String loginAccount(@RequestBody User user, HttpServletRequest request){
         logger.info(user.getUserId()+"======================" + user.getPassWord());
 
         User userInfo = userService.queryUser(user);
@@ -64,8 +65,21 @@ public class UserController {
         if (!passWord.equals(userInfo.getPassWord())){
             throw new SystemException("密码错误");
         }
-       return "登录成功";
+        HttpSession session = request.getSession();
+        session.setAttribute("userId",user.getUserId());
+        return "success";
     }
+
+    /**
+     * 用户退出，销毁session
+     * */
+    public void loginOut(@RequestBody HttpServletRequest request){
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+    }
+
 
     /**
      * 查询用户信息
