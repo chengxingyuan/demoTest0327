@@ -111,50 +111,75 @@
 
     <update id="updateUserInfo" parameterType="com.cxy.model.User">
 
-        <foreach collection="list" item="item" index="index"
-                 separator=";">
+        <!--<foreach collection="list" item="item" index="index"-->
+                 <!--separator=";">-->
             UPDATE USER <set>
-            <if test="item.realName != null and item.realName != ''">
-                "real_name" = #{item.realName},
+            <if test="realName != null and realName != ''">
+                real_nam" = #{realName},
             </if>
-            <if test="item.passWord != null and item.passWord != ''">
-                "pass_word" = #{item.passWord},
+            <if test="passWord != null and passWord != ''">
+                pass_word = #{passWord},
             </if>
-            <if test="item.nickName != null and item.nickName != ''">
-                "nick_name" = #{item.nickName},
+            <if test="nickName != null and nickName != ''">
+                nick_name = #{nickName},
             </if>
-            <if test="item.sex != null and item.sex != ''">
-                "sex" = #{item.sex},
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
             </if>
-            <if test="item.support != null and item.support != ''">
-                "support" = #{item.support},
+            <if test="support != null and support != ''">
+                support = #{support},
             </if>
-            <if test="item.university != null and item.university != ''">
-                "university" = #{item.university},
+            <if test="university != null and university != ''">
+                university = #{university},
             </if>
-            <if test="item.attention != null and item.attention != ''">
-                "attention" = #{item.attention},
+            <if test="attention != null and attention != ''">
+                attention = #{attention},
             </if>
-            <if test="item.liveCity != null and item.liveCity != ''">
-                "liveCity" = #{item.liveCity},
+            <if test="liveCity != null and liveCity != ''">
+                liveCity = #{liveCity},
             </if>
-            <if test="item.fans != null and item.fans != ''">
-                "fans" = #{item.fans},
+            <if test="fans != null and fans != ''">
+                fans = #{fans},
             </if>
-            <if test="item.phoneNum != null and item.phoneNum != ''">
-                "phoneNum" = #{item.phoneNum}
+            <if test="phoneNum != null and phoneNum != ''">
+                phoneNum = #{phoneNum}
             </if>
+
+            <if test="loginScore != null and loginScore != ''">
+                login_score = #{loginScore}
+            </if>
+            <if test="payScore != null and payScore != ''">
+                pay_score = #{payScore}
+            </if>
+            <if test="activityScore != null and activityScore != ''">
+                activity_score = #{activityScore}
+            </if>
+            <if test="todayAvailableSupport != null and todayAvailableSupport != ''">
+                today_available_support = #{todayAvailableSupport}
+            </if>
+            <if test="payAvailableSupport != null and payAvailableSupport != ''">
+                pay_available_support = #{payAvailableSupport}
+            </if>
+            <if test="historyUsedSupport != null and historyUsedSupport != ''">
+                history_used_support = #{historyUsedSupport}
+            </if>
+            <if test="vipEndTime != null">
+                vip_end_time = #{vipEndTime}
+            </if>
+            <if test="historyPayMoney != null and historyPayMoney != ''">
+                history_pay_money = #{historyPayMoney}
+            </if>
+
         </set>
             <where>
-                <if test="item.id != null and item.id != ''">
-                    "id" = #{item.id}
+                <if test="id != null and id != ''">
+                    "id" = #{id}
                 </if>
-                <if test="item.userId != null and item.userId != ''">
-                    "user_id" = #{item.userId}
+                <if test="userId != null and userId != ''">
+                    "user_id" = #{userId}
                 </if>
             </where>
-
-        </foreach>
+      <!--</foreach>-->
     </update>
 
 
@@ -184,6 +209,10 @@
         SELECT user_id FROM user ORDER BY id DESC limit 1
     </select>
 
+    <!--查询所有已注册的手机号-->
+    <select id="queryPhoneList" resultType="String">
+        SELECT phone_num FROM  USER
+    </select>
 
 
 </mapper>

@@ -13,12 +13,12 @@ public class SystemException extends RuntimeException{
     public SystemException() {
     }
     public SystemException(String message) {
-        super();
+        super(message);
         errorMessage = message;
     }
 
     public SystemException(String code, String message){
-        super();
+        super(message);
         errorCode = code;
         errorMessage = message;
     }

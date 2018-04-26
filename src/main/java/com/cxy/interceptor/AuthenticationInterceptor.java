@@ -26,7 +26,11 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         String path = httpServletRequest.getServletPath();
         logger.info("当前拦截路径为，{}", path);
         List<String> ignoreList = new ArrayList<>();
+        ignoreList.add("/error");
         ignoreList.add("/user/loginAccount");
+        ignoreList.add("/login");
+        ignoreList.add("/index");
+        ignoreList.add("/user/saveUser");
         //忽略拦截
         if (ignoreList != null && ignoreList.size() > 0) {
             for (String ignorePath : ignoreList){
@@ -40,8 +44,8 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = httpServletRequest.getSession(false);
         if (session == null || session.getAttribute("userId") == null) {
             //
-            logger.info("用户未登陆。。。。。。。。");
-            return false;
+            logger.info("用户未登陆，请他去登录。");
+            httpServletResponse.sendRedirect("/cxy/login");
         }
         logger.info("通过拦截=========================================");
         return true;

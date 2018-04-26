@@ -1,5 +1,6 @@
 package com.cxy.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -79,6 +80,110 @@ public class User {
      * 用户id
      * */
     private Long userId;
+
+    /**
+     * 登录积分
+     * */
+    private int loginScore;
+
+    /**
+     * 付费获得的积分
+     * */
+    private int payScore;
+
+    /**
+     * 活动获得的积分
+     * */
+    private int activityScore;
+
+    /**
+     * 今日可用点赞数
+     * */
+    private int todayAvailableSupport;
+
+    /**
+     * 购买的可用点赞数
+     * */
+    private int payAvailableSupport;
+
+    /**
+     * 历史赞过数量
+     * */
+    private int historyUsedSupport;
+
+    /**
+     * vip过期时间
+     * */
+    private Date vipEndTime;
+
+    /**
+     * 历史消费金额
+     * */
+    private BigDecimal historyPayMoney;
+
+    public int getLoginScore() {
+        return loginScore;
+    }
+
+    public void setLoginScore(int loginScore) {
+        this.loginScore = loginScore;
+    }
+
+    public int getPayScore() {
+        return payScore;
+    }
+
+    public void setPayScore(int payScore) {
+        this.payScore = payScore;
+    }
+
+    public int getActivityScore() {
+        return activityScore;
+    }
+
+    public void setActivityScore(int activityScore) {
+        this.activityScore = activityScore;
+    }
+
+    public int getTodayAvailableSupport() {
+        return todayAvailableSupport;
+    }
+
+    public void setTodayAvailableSupport(int todayAvailableSupport) {
+        this.todayAvailableSupport = todayAvailableSupport;
+    }
+
+    public int getPayAvailableSupport() {
+        return payAvailableSupport;
+    }
+
+    public void setPayAvailableSupport(int payAvailableSupport) {
+        this.payAvailableSupport = payAvailableSupport;
+    }
+
+    public int getHistoryUsedSupport() {
+        return historyUsedSupport;
+    }
+
+    public void setHistoryUsedSupport(int historyUsedSupport) {
+        this.historyUsedSupport = historyUsedSupport;
+    }
+
+    public Date getVipEndTime() {
+        return vipEndTime;
+    }
+
+    public void setVipEndTime(Date vipEndTime) {
+        this.vipEndTime = vipEndTime;
+    }
+
+    public BigDecimal getHistoryPayMoney() {
+        return historyPayMoney;
+    }
+
+    public void setHistoryPayMoney(BigDecimal historyPayMoney) {
+        this.historyPayMoney = historyPayMoney;
+    }
 
     public String getPassWord() {
         return passWord;

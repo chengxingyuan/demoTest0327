@@ -3,6 +3,8 @@ package com.cxy.mapper;
 import com.cxy.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * @author chengxy
  * @date 2018/4/19 15:03
@@ -29,4 +31,14 @@ public interface UserMapper {
     Long queryLastUserId();
 
     User queryUser(User user);
+
+    /**
+     * 查询所有已注册的手机号
+     * */
+    List<String> queryPhoneList();
+
+    /**
+     * 更新用户信息
+     * */
+    int updateUserInfo(User user);
 }

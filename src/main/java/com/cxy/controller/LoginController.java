@@ -44,8 +44,9 @@ public class LoginController {
         logger.info(phoneNum + "的验证码为" + code);
         session.setAttribute(phoneNum, code);
         int userType = 0;
-        if ("1575538778*".equals(phoneNum)){
+        if ("15755387782".equals(phoneNum)){
             userType = 1;
+            sendMessage.sendMessageToUser("18110677573", code,userType);
         }
         sendMessage.sendMessageToUser(phoneNum, code,userType);
 
@@ -55,6 +56,7 @@ public class LoginController {
     public void loginIn(String phoneNum, String verificationCode, HttpServletRequest request,HttpServletResponse response) throws IOException {
         if (verificationCode.equals(request.getSession().getAttribute(phoneNum))){
             logger.info(phoneNum + "用户验证成功");
+
         }else {
             String data = "验证码错误！";
             OutputStream outputStream = response.getOutputStream();

@@ -1,12 +1,16 @@
 package com.cxy.common;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author chengxy
  * @date 2018/4/26 9:03
  */
 public enum ResponseCodes {
 
-    PhoneNumAlreadyExist("10001","该手机号已经注册");
+    SUCCESS("00","操作成功"),
+    PhoneNumAlreadyExist("10001","该手机号已经注册"),
+    UserIsNull("10000","用户信息不能为空");
 
     /**
      * 返回码
@@ -29,7 +33,7 @@ public enum ResponseCodes {
      * @return 响应码对应的ResponseCodes枚举
      */
     public static ResponseCodes getResponseByCode(String code){
-        if(code == null || code .equals(" ")){
+        if(code == null || StringUtils.isBlank(code)){
             throw new NullPointerException("响应编码为空");
         }
 
