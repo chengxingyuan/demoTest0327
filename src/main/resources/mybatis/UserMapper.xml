@@ -173,10 +173,10 @@
         </set>
             <where>
                 <if test="id != null and id != ''">
-                    "id" = #{id}
+                    id = #{id}
                 </if>
                 <if test="userId != null and userId != ''">
-                    "user_id" = #{userId}
+                    user_id = #{userId}
                 </if>
             </where>
       <!--</foreach>-->

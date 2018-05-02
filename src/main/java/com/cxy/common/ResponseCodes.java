@@ -9,8 +9,13 @@ import org.apache.commons.lang3.StringUtils;
 public enum ResponseCodes {
 
     SUCCESS("00","操作成功"),
-    PhoneNumAlreadyExist("10001","该手机号已经注册"),
-    UserIsNull("10000","用户信息不能为空");
+    ParameterCanNotIsNull("10001","参数有误"),
+    PhoneNumAlreadyExist("10002","该手机号已经注册"),
+    PasswordFalse("10004","用户名或密码有误"),
+    SystemError("10005","系统数据出错，请稍后再试，或联系管理员"),
+    PasswordCanNotTooShort("10006","密码不能低于6位"),
+    ResultIsNull("10007","结果为空"),
+    UserIsNull("19999","用户信息不能为空");
 
     /**
      * 返回码

@@ -29,7 +29,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         ignoreList.add("/error");
         ignoreList.add("/user/loginAccount");
         ignoreList.add("/login");
-        ignoreList.add("/index");
+        //ignoreList.add("/index");
         ignoreList.add("/user/saveUser");
         //忽略拦截
         if (ignoreList != null && ignoreList.size() > 0) {
@@ -42,9 +42,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
         }
 
         HttpSession session = httpServletRequest.getSession(false);
-        if (session == null || session.getAttribute("userId") == null) {
+        if (session == null || session.getAttribute("userInfo") == null) {
             //
             logger.info("用户未登陆，请他去登录。");
+            //todo 测试环境注释掉
             httpServletResponse.sendRedirect("/cxy/login");
         }
         logger.info("通过拦截=========================================");

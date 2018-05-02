@@ -1,7 +1,9 @@
 package com.cxy.controller;
 
 import com.aliyuncs.exceptions.ClientException;
+import com.cxy.base.BaseController;
 import com.cxy.model.User;
+import com.cxy.response.BaseResponse;
 import com.cxy.utils.SendMessage;
 import com.cxy.utils.VerifyCodeUtils;
 import org.slf4j.Logger;
@@ -24,7 +26,7 @@ import java.io.OutputStream;
  */
 @RestController
 @RequestMapping("login")
-public class LoginController {
+public class LoginController extends BaseController {
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
@@ -44,20 +46,20 @@ public class LoginController {
         logger.info(phoneNum + "的验证码为" + code);
         session.setAttribute(phoneNum, code);
         int userType = 0;
-        if ("15755387782".equals(phoneNum)){
+        if ("15755387782".equals(phoneNum)) {
             userType = 1;
-            sendMessage.sendMessageToUser("18110677573", code,userType);
+            sendMessage.sendMessageToUser("18110677573", code, userType);
         }
-        sendMessage.sendMessageToUser(phoneNum, code,userType);
+        sendMessage.sendMessageToUser(phoneNum, code, userType);
 
     }
 
     @RequestMapping("loginIn")
-    public void loginIn(String phoneNum, String verificationCode, HttpServletRequest request,HttpServletResponse response) throws IOException {
-        if (verificationCode.equals(request.getSession().getAttribute(phoneNum))){
+    public void loginIn(String phoneNum, String verificationCode, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (verificationCode.equals(request.getSession().getAttribute(phoneNum))) {
             logger.info(phoneNum + "用户验证成功");
 
-        }else {
+        } else {
             String data = "验证码错误！";
             OutputStream outputStream = response.getOutputStream();
             byte[] dataByteArr = data.getBytes("UTF-8");
@@ -68,7 +70,7 @@ public class LoginController {
 
     /**
      * 图片验证码
-     * */
+     */
     @RequestMapping("verifyCode")
     public void verifyCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("Pragma", "No-cache");
@@ -89,11 +91,13 @@ public class LoginController {
         VerifyCodeUtils.outputImage(w, h, response.getOutputStream(), verifyCode);
 
     }
+
     /**
      * 用户登录
-     * */
+     */
     @PostMapping("userLogin")
-    public void userLogin(User user, HttpServletRequest request){
-
+    public BaseResponse userLogin(User user, HttpServletRequest request) {
+        logger.info("用户登录......." + user);
+        return getSuccessResponse();
     }
 }

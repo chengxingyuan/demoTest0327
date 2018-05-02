@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cxy.mapper.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="com.cxy.model.Article">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="little_title" property="littleTitle"/>
+        <result column="author" property="author"/>
+        <result column="about_author" property="aboutAuthor"/>
+        <result column="context" property="context"/>
+        <result column="good_comment_num" property="goodCommentNum"/>
+        <result column="create_time" property="createTime"/>
+        <result column="belong_college" property="belongCollege"/>
+
+    </resultMap>
+
+    <insert id="saveArticle" parameterType="com.cxy.model.Article" useGeneratedKeys="true" keyProperty="id">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null">
+                title,
+            </if>
+            <if test="littleTitle != null">
+                little_title,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="context != null">
+                context,
+            </if>
+            <if test="aboutAuthor != null">
+                about_author,
+            </if>
+            <if test="goodCommentNum != null">
+                good_comment_num,
+            </if>
+            <if test="badCommentNum != null">
+                bad_comment_num,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="hotScore != null">
+                hot_score,
+            </if>
+            <if test="getMoney != null">
+                get_money,
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time,
+            </if>
+            <if test="belongCollege != null">
+                belong_college,
+            </if>
+            <if test="belongMajor != null">
+                belong_major,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="littleTitle != null">
+                #{littleTitle},
+            </if>
+            <if test="author != null">
+                #{author},
+            </if>
+            <if test="context != null">
+                #{context},
+            </if>
+            <if test="aboutAuthor != null">
+                #{aboutAuthor},
+            </if>
+            <if test="goodCommentNum != null">
+                #{goodCommentNum},
+            </if>
+            <if test="badCommentNum != null">
+                #{badCommentNum},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="hotScore != null">
+                #{hotScore},
+            </if>
+            <if test="getMoney != null">
+                #{getMoney},
+            </if>
+            <if test="lastUpdateTime != null">
+                #{lastUpdateTime},
+            </if>
+            <if test="belongCollege != null">
+                #{belongCollege},
+            </if>
+            <if test="belongMajor != null">
+                #{belongMajor},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="queryArticleByCollege" resultMap="BaseResultMap" parameterType="string">
+        SELECT id,title,little_title,author,create_time FROM  article WHERE belong_college = #{collegeName}
+    </select>
+
+    <select id="queryArticleDetailsById" resultMap="BaseResultMap" parameterType="long">
+        SELECT *FROM  article WHERE id = #{id}
+    </select>
+
+
+</mapper>

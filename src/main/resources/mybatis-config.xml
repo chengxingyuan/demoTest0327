@@ -7,5 +7,6 @@
         <mapper resource="mybatis/CarMapper.xml"/>
         <mapper resource="mybatis/CollegeMapper.xml"/>
         <mapper resource="mybatis/UserMapper.xml"/>
+        <mapper resource="mybatis/ArticleMapper.xml"/>
     </mappers>
 </configuration>
