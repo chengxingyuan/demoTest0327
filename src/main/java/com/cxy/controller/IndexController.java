@@ -17,16 +17,16 @@ public class IndexController {
     private Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @RequestMapping("/index")
-    public String welcome(ModelMap map){
+    public String welcome(ModelMap map) {
         User user = UserContext.getUser();
-        logger.info("当前登录用户是{}",user);
-        logger.info("访问index页");
-        map.put("test","无敌1111");
+        logger.info("当前登录用户是{}", user);
+
+        map.put("test", "无敌1111");
         return "index";
     }
 
     @RequestMapping("/login")
-    public String login(ModelMap map){
+    public String login(ModelMap map) {
         return "login";
     }
 }
