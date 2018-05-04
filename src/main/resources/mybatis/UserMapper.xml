@@ -14,6 +14,10 @@
         <result column="fans" property="fans"/>
         <result column="user_id" property="userId"/>
         <result column="pass_word" property="passWord"/>
+        <result column="hide_self_or_not" property="hideSelfOrNot"/>
+        <result column="today_available_support" property="todayAvailableSupport"/>
+        <result column="pay_available_support" property="payAvailableSupport"/>
+        <result column="history_used_support" property="historyUsedSupport"/>
     </resultMap>
 
     <insert id="saveUser" parameterType="com.cxy.model.User" useGeneratedKeys="true" keyProperty="id">
@@ -112,10 +116,11 @@
     <update id="updateUserInfo" parameterType="com.cxy.model.User">
 
         <!--<foreach collection="list" item="item" index="index"-->
-                 <!--separator=";">-->
-            UPDATE USER <set>
+        <!--separator=";">-->
+        UPDATE USER
+        <set>
             <if test="realName != null and realName != ''">
-                real_nam" = #{realName},
+                real_name = #{realName},
             </if>
             <if test="passWord != null and passWord != ''">
                 pass_word = #{passWord},
@@ -123,83 +128,95 @@
             <if test="nickName != null and nickName != ''">
                 nick_name = #{nickName},
             </if>
-            <if test="sex != null and sex != ''">
+            <if test="sex != null ">
                 sex = #{sex},
             </if>
-            <if test="support != null and support != ''">
+            <if test="support != null ">
                 support = #{support},
             </if>
             <if test="university != null and university != ''">
                 university = #{university},
             </if>
-            <if test="attention != null and attention != ''">
+            <if test="attention != null ">
                 attention = #{attention},
             </if>
             <if test="liveCity != null and liveCity != ''">
-                liveCity = #{liveCity},
+                live_city = #{liveCity},
             </if>
             <if test="fans != null and fans != ''">
                 fans = #{fans},
             </if>
             <if test="phoneNum != null and phoneNum != ''">
-                phoneNum = #{phoneNum}
+                phone_num = #{phoneNum},
             </if>
 
-            <if test="loginScore != null and loginScore != ''">
-                login_score = #{loginScore}
+            <if test="loginScore != null  ">
+                login_score = #{loginScore},
             </if>
-            <if test="payScore != null and payScore != ''">
-                pay_score = #{payScore}
+            <if test="payScore != null  ">
+                pay_score = #{payScore},
             </if>
-            <if test="activityScore != null and activityScore != ''">
-                activity_score = #{activityScore}
+            <if test="activityScore != null ">
+                activity_score = #{activityScore},
             </if>
-            <if test="todayAvailableSupport != null and todayAvailableSupport != ''">
-                today_available_support = #{todayAvailableSupport}
+            <if test="todayAvailableSupport != null ">
+                today_available_support = #{todayAvailableSupport},
             </if>
             <if test="payAvailableSupport != null and payAvailableSupport != ''">
-                pay_available_support = #{payAvailableSupport}
+                pay_available_support = #{payAvailableSupport},
             </if>
             <if test="historyUsedSupport != null and historyUsedSupport != ''">
-                history_used_support = #{historyUsedSupport}
+                history_used_support = #{historyUsedSupport},
             </if>
             <if test="vipEndTime != null">
-                vip_end_time = #{vipEndTime}
+                vip_end_time = #{vipEndTime},
             </if>
             <if test="historyPayMoney != null and historyPayMoney != ''">
-                history_pay_money = #{historyPayMoney}
+                history_pay_money = #{historyPayMoney},
+            </if>
+            <if test="lastLoginTime != null ">
+                last_login_time = #{lastLoginTime},
+            </if>
+            <if test="lastLoginIp != null and lastLoginIp != ''">
+                last_login_ip = #{lastLoginIp},
+            </if>
+            <if test="hideSelfOrNot != null ">
+                hide_self_or_not = #{hideSelfOrNot}
             </if>
 
         </set>
-            <where>
-                <if test="id != null and id != ''">
-                    id = #{id}
-                </if>
-                <if test="userId != null and userId != ''">
-                    user_id = #{userId}
-                </if>
-            </where>
-      <!--</foreach>-->
+        <where>
+            <if test="id != null ">
+                id = #{id}
+            </if>
+            <if test="userId != null ">
+               AND user_id = #{userId}
+            </if>
+        </where>
+        <!--</foreach>-->
     </update>
-
 
 
     <select id="queryUser" resultMap="BaseResultMap" resultType="com.cxy.model.User" parameterType="map">
         SELECT * FROM user
-        <include refid="selectSql" />
+        <include refid="selectSql"/>
     </select>
 
     <sql id="selectSql">
         <where>
-            <if test="userId !=null and userId != ''" >
+            <if test="userId !=null and userId != ''">
                 user_id = #{userId}
             </if>
-            <if test="phoneNum !=null and phoneNum != ''" >
-                phone_num = #{phoneNum}
+            <if test="phoneNum !=null and phoneNum != ''">
+                AND phone_num = #{phoneNum}
             </if>
         </where>
 
     </sql>
+
+    <select id="queryUserByUserIdForUpdate" resultMap="BaseResultMap" parameterType="Long">
+        SELECT * FROM user WHERE user_id = #{userId} FOR UPDATE
+    </select>
 
     <select id="queryUserByUserId" resultMap="BaseResultMap" parameterType="Long">
         SELECT * FROM user WHERE user_id = #{userId}
@@ -211,7 +228,7 @@
 
     <!--查询所有已注册的手机号-->
     <select id="queryPhoneList" resultType="String">
-        SELECT phone_num FROM  USER
+        SELECT phone_num FROM USER
     </select>
 
 

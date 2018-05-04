@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cxy.mapper.SupportCollegeMapper">
+
+    <insert id="insertSupportCollege" parameterType="com.cxy.model.SupportCollege" useGeneratedKeys="true" keyProperty="id">
+        insert into support_college
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="whichCollege != null">
+                which_college,
+            </if>
+            <if test="supportNum != null">
+                support_num,
+            </if>
+            <if test="userIdOfSupport != null">
+                user_id_of_support,
+            </if>
+            <if test="supportTime != null">
+                support_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="whichCollege != null">
+                #{whichCollege},
+            </if>
+            <if test="supportNum != null">
+                #{supportNum},
+            </if>
+            <if test="userIdOfSupport != null">
+                #{userIdOfSupport},
+            </if>
+            <if test="supportTime != null">
+                #{supportTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

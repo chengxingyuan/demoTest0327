@@ -106,6 +106,7 @@ public class User {
      * */
     private int payAvailableSupport;
 
+
     /**
      * 历史赞过数量
      * */
@@ -120,6 +121,45 @@ public class User {
      * 历史消费金额
      * */
     private BigDecimal historyPayMoney;
+
+    /**
+     * 最后登录时间
+     * */
+    private Date lastLoginTime;
+
+    /**
+     * 最后登录时ip
+     * */
+    private String lastLoginIp;
+
+    /**
+     * 是否隐藏个人信息 0：不隐藏   1：隐藏
+     * */
+    private int hideSelfOrNot;
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
+    }
+
+    public int getHideSelfOrNot() {
+        return hideSelfOrNot;
+    }
+
+    public void setHideSelfOrNot(int hideSelfOrNot) {
+        this.hideSelfOrNot = hideSelfOrNot;
+    }
 
     public int getLoginScore() {
         return loginScore;

@@ -14,6 +14,8 @@ public interface IUserService {
 
     User queryUserByUserId(Long userId);
 
+    User queryUserByUserIdForUpdate(Long userId);
+
     Long queryLastUserId();
 
     User queryUser(User user);

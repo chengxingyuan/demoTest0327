@@ -25,6 +25,13 @@ public interface UserMapper {
     User queryUserByUserId(Long userId);
 
     /**
+     * 查询用户信息加锁
+     * @param userId 用户id
+     * @return user 详细信息
+     * */
+    User queryUserByUserIdForUpdate(Long userId);
+
+    /**
      * 查询userId进行自增长
      * @return 上一个注册人的userId
      * */

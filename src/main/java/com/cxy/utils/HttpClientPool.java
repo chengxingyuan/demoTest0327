@@ -31,6 +31,7 @@ import java.net.UnknownHostException;
 /**
  * @author chengxy
  * @date 2018/4/20 15:45
+ * http连接池
  */
 @Component
 public class HttpClientPool {
@@ -66,10 +67,6 @@ public class HttpClientPool {
 
     /**
      * 创建HttpClient对象
-     *
-     * @return
-     * @author SHANHY
-     * @create 2015年12月18日
      */
     public static CloseableHttpClient createHttpClient(int maxTotal,
                                                        int maxPerRoute) {
@@ -139,10 +136,6 @@ public class HttpClientPool {
 
     /**
      * 获取HttpClient对象
-     *
-     * @return
-     * @author SHANHY
-     * @create 2015年12月18日
      */
     public static CloseableHttpClient getHttpClient() {
         if (httpClient == null) {

@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 /**
  * @author chengxy
  * @date 2018/4/20 12:36
+ * 支付宝H5支付
  */
 @Component
 public class Alipay {

@@ -17,6 +17,7 @@ import java.net.URLDecoder;
 /**
  * @author chengxy
  * @date 2018/4/20 14:30
+ * 微信H5支付
  */
 @Component
 public class WeixinPay {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cxy.mapper.SupportUserMapper">
+
+    <insert id="insertSupportUser" parameterType="com.cxy.model.SupportUser" useGeneratedKeys="true" keyProperty="id">
+        insert into support_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="whichUser != null">
+                which_user,
+            </if>
+            <if test="supportNum != null">
+                support_num,
+            </if>
+            <if test="userIdOfSupport != null">
+                user_id_of_support,
+            </if>
+            <if test="supportTime != null">
+                support_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="whichUser != null">
+                #{whichUser},
+            </if>
+            <if test="supportNum != null">
+                #{supportNum},
+            </if>
+            <if test="userIdOfSupport != null">
+                #{userIdOfSupport},
+            </if>
+            <if test="supportTime != null">
+                #{supportTime},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

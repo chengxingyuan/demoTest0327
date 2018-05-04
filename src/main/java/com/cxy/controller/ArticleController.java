@@ -21,7 +21,6 @@ import java.util.List;
 @RestController
 @RequestMapping("article")
 public class ArticleController extends BaseController {
-    private Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
     private ArticleResponse response = new ArticleResponse();
 

@@ -18,9 +18,8 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String welcome(ModelMap map) {
-        User user = UserContext.getUser();
-        logger.info("当前登录用户是{}", user);
-
+       // User user = UserContext.getUser();
+       // logger.info(user.getUserId()+"是当前用户Id");
         map.put("test", "无敌1111");
         return "index";
     }

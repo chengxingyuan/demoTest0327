@@ -29,4 +29,14 @@ public class CollegeServiceImpl implements ICollegeService{
     public College queryCollegeDetailByName(String collegeName) {
         return collegeMapper.queryCollegeDetailByName(collegeName);
     }
+
+    @Override
+    public void updateCollegeInfo(College college) {
+        collegeMapper.updateCollegeInfo(college);
+    }
+
+    @Override
+    public College queryCollegeForUpdate(String whichCollege) {
+        return collegeMapper.queryCollegeForUpdate(whichCollege);
+    }
 }

@@ -8,5 +8,6 @@
         <mapper resource="mybatis/CollegeMapper.xml"/>
         <mapper resource="mybatis/UserMapper.xml"/>
         <mapper resource="mybatis/ArticleMapper.xml"/>
+        <mapper resource="mybatis/SupportCollegeMapper.xml"/>
     </mappers>
 </configuration>

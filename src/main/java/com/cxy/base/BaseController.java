@@ -49,4 +49,13 @@ public class BaseController {
         response.setMessage(ResponseCodes.ResultIsNull.getMessage());
         return response;
     }
+
+    /**
+     * 用户信息出错
+     * */
+    protected BaseResponse userInfoError(){
+        response.setCode(ResponseCodes.UserIsNull.getCode());
+        response.setMessage(ResponseCodes.UserIsNull.getMessage());
+        return response;
+    }
 }

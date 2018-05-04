@@ -13,4 +13,8 @@ public interface ICollegeService {
     List<String> queryCollegeByInitial(String initial);
 
     College queryCollegeDetailByName(String collegeName);
+
+    void updateCollegeInfo(College college);
+
+    College queryCollegeForUpdate(String whichCollege);
 }

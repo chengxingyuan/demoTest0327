@@ -3,6 +3,7 @@ package com.cxy.controller;
 import com.cxy.base.BaseController;
 import com.cxy.common.ResponseCodes;
 import com.cxy.exception.SystemException;
+import com.cxy.model.SupportUser;
 import com.cxy.model.User;
 import com.cxy.response.BaseResponse;
 import com.cxy.service.IUserService;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("user")
-public class UserController extends BaseController{
+public class UserController extends BaseController {
     private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
@@ -55,12 +56,12 @@ public class UserController extends BaseController{
             }
         }
 
-        String requestRealIp = RequestRealIp.getRequestRealIp(request);
         String passWord = user.getPassWord();
         if (passWord != null) {
             passWord = MD5Utils.MD5(passWord);
             user.setPassWord(passWord);
         }
+        String requestRealIp = RequestRealIp.getRequestRealIp(request);
         user.setRegisterIp(requestRealIp);
         user.setCreateTime(new Date());
         synchronized (this) {
@@ -80,24 +81,30 @@ public class UserController extends BaseController{
      */
     @PostMapping("/loginAccount")
     public BaseResponse loginAccount(User user, HttpServletRequest request) {
-        if (user == null || user.getUserId() == null){
+        if (user == null || user.getUserId() == null) {
             return getNotNullResponse();
         }
         //如果传过来的登录名超长 说明是手机号登录
-        if (user.getUserId() > 9999999999L){
+        if (user.getUserId() > 9999999999L) {
             user.setPhoneNum(user.getUserId().toString());
             user.setUserId(null);
         }
-        logger.info("请求参数{}",user);
+        //logger.info("请求参数{}",user);
         User userInfo = userService.queryUser(user);
-        if (userInfo == null ) {
-            return getFalseResponse(ResponseCodes.PasswordFalse.getCode(),ResponseCodes.PasswordFalse.getMessage());
+        if (userInfo == null) {
+            return getFalseResponse(ResponseCodes.PasswordFalse.getCode(), ResponseCodes.PasswordFalse.getMessage());
         }
-        logger.info("用户信息{}",userInfo);
+        //logger.info("用户信息{}",userInfo);
         String passWord = MD5Utils.MD5(user.getPassWord());
         if (!passWord.equals(userInfo.getPassWord())) {
-            return getFalseResponse(ResponseCodes.PasswordFalse.getCode(),ResponseCodes.PasswordFalse.getMessage());
+            return getFalseResponse(ResponseCodes.PasswordFalse.getCode(), ResponseCodes.PasswordFalse.getMessage());
         }
+        //更新用户最后登陆时间和最近一次登陆ip
+        String requestRealIp = RequestRealIp.getRequestRealIp(request);
+        userInfo.setLastLoginIp(requestRealIp);
+        userInfo.setLastLoginTime(new Date());
+        userService.updateUser(userInfo);
+
         HttpSession session = request.getSession();
         session.setAttribute("userInfo", userInfo);
         return getSuccessResponse();
@@ -120,6 +127,7 @@ public class UserController extends BaseController{
      */
     @GetMapping("/queryUserByUserId")
     public User queryUser(Long userId) {
+
         return userService.queryUserByUserId(userId);
     }
 
@@ -134,12 +142,28 @@ public class UserController extends BaseController{
 
         String passWord = user.getPassWord();
         if (StringUtils.isEmpty(passWord) || passWord.length() < 6) {
-            return getFalseResponse(ResponseCodes.PasswordCanNotTooShort.getCode(),ResponseCodes.PasswordCanNotTooShort.getMessage());
+            return getFalseResponse(ResponseCodes.PasswordCanNotTooShort.getCode(), ResponseCodes.PasswordCanNotTooShort.getMessage());
         }
         passWord = MD5Utils.MD5(passWord);
         user.setPassWord(passWord);
         userService.updateUser(user);
         return getSuccessResponse();
     }
+
+    /**
+     * 用户点赞用户
+     */
+    @PostMapping("supportUser")
+    public BaseResponse supportUser(SupportUser supportUser) {
+        if (supportUser == null || supportUser.getSupportNum() < 1) {
+            return getNotNullResponse();
+        }
+
+        //赞不足
+        response.setCode(ResponseCodes.SupportNotEnough.getCode());
+        response.setMessage(ResponseCodes.SupportNotEnough.getMessage());
+        return response;
+    }
+
 
 }

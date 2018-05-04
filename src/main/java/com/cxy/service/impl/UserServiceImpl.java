@@ -30,6 +30,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public User queryUserByUserIdForUpdate(Long userId) {
+        return userMapper.queryUserByUserIdForUpdate(userId);
+    }
+
+    @Override
     public Long queryLastUserId() {
         return userMapper.queryLastUserId();
     }

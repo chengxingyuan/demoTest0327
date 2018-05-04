@@ -14,7 +14,9 @@ public enum ResponseCodes {
     PasswordFalse("10004","用户名或密码有误"),
     SystemError("10005","系统数据出错，请稍后再试，或联系管理员"),
     PasswordCanNotTooShort("10006","密码不能低于6位"),
-    ResultIsNull("10007","结果为空"),
+    ResultIsNull("10007","查询结果为空"),
+    SupportNotEnough("10008","亲，可用点赞数不足了哦，每天6点会刷新10个赞"),
+    CollegeIsNull("10009","大学信息为空"),
     UserIsNull("19999","用户信息不能为空");
 
     /**

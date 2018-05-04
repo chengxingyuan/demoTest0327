@@ -15,6 +15,26 @@ public class College {
 
     private String description;
 
+    private int supportNum;
+
+    private int registerNum;
+
+    public int getSupportNum() {
+        return supportNum;
+    }
+
+    public void setSupportNum(int supportNum) {
+        this.supportNum = supportNum;
+    }
+
+    public int getRegisterNum() {
+        return registerNum;
+    }
+
+    public void setRegisterNum(int registerNum) {
+        this.registerNum = registerNum;
+    }
+
     public int getId() {
         return id;
     }

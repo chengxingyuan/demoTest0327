@@ -24,7 +24,6 @@ public class UserContext{
      * @return
      */
     public static User getUser() {
-        System.out.println( "当前线程：" + Thread.currentThread().getName() );
         return local.get();
     }
 
